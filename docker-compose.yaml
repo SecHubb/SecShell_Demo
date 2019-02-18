@@ -1,0 +1,41 @@
+version: '3'
+ 
+networks:
+  shell-network:
+    driver: bridge
+ 
+services:
+ 
+  elasticsearch:
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.0.0-beta1"
+    container_name: elasticsearch
+    networks:
+     - shell-network
+    ports:
+    - "9200:9200"
+    - "9300:9300"
+    volumes:
+    - /tmp:/usr/share/elasticsearch/data
+    environment:
+      discovery.type: single-node
+ 
+ 
+  kibana:
+    image: "docker.elastic.co/kibana/kibana:7.0.0-beta1"
+    container_name: kibana
+    networks:
+     - shell-network
+    ports:
+     - "5601:5601"
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    depends_on:
+     - elasticsearch
+ 
+  cerebro:
+    image: "lmenezes/cerebro"
+    container_name: cerebro
+    networks:
+     - shell-network
+    ports:
+     - "9000:9000"
