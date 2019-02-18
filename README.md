@@ -31,8 +31,8 @@ For this demonstration we will use a firewall log that was recorded from a VPS l
 To import the ufw.log data into Kibana follow these steps:
  
 1. Go to Kibana in your virtual machine by opening a browser and going to http://localhost:5601. Select the machine learning plugin on the left side of Kibana, then select the Data Visualizer tab at the top of the screen.
-2. Click the button to "Select or drag and drop a file" and pick the ufw.log file you wish to import. If you see an error at this stage just try it again, there seems to be a potential bug with the 7.0 beta of Elasticsearch.
-3. After "Analyzing data" the next screen will not detect the fields correctly so we must fix it. Select the "Override settings" button in the Summary section and in the Grok pattern window clear out what is there and paste the below statement, then press Apply. Paste the following in the grok pattern window:
+2. Click the button to "Select or drag and drop a file" and pick the ufw.log filefrom the repo. If you see an error at this stage just try it again, there seems to be a potential bug with the 7.0.0beta1 of Elasticsearch that may cause it to error out if analysis takes too long.
+3. After "Analyzing data" the next screen will show some information, but it does not fully detect the fields correctly, so we must fix it. Select the "Override settings" button in the Summary section and in the Grok pattern window clear out what is there and paste the below statement, then press Apply. Paste the following in the grok pattern window:
 
 ```%{SYSLOGBASE} \[%{DATA}\] \[%{DATA:action}\] IN=(%{WORD:in})? OUT=(%{WORD:out})?( MAC=%{DATA:mac})? SRC=%{IP:source_ip} DST=%{IP:destination_ip} %{DATA} PROTO=%{WORD:protocol}( SPT=%{INT:source_port} DPT=%{INT:destination_port})?```
  
