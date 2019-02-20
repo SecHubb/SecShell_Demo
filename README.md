@@ -43,7 +43,8 @@ To import the ufw.log data into Kibana follow these steps:
  
 Place the following in the **mappings** window:
 
-```{
+```
+{
   "@timestamp": {
     "type": "date"
   },
@@ -138,5 +139,5 @@ Place the following in the ingest pipeline window:
 }
 ```
 
-8. Once this is complete, click the blue **import** button and your data should be cleanly ingested. You will be able to view it by selecting the name of the index (ufw_logs) you chose in the previous steps.
+8. Once this is complete, click the blue **import** button and your data should be cleanly ingested. You will be able to view it by going to the Discover tab and selecting the name of the index (ufw_logs) you chose in the previous steps. You also need to select the correct timeframe in the time picker at the upper right of the window in the Discover tab. Select Feb 12th, 2019 to Feb 18th, 2019 inclusive, and the data should show up on the page once you hit the Refresh button.
 9. To import the premade visualizations and dashboards, use the `dashboard.json` file included with this repo. Click on the management tab on the left side of Kibana, then choose **Saved Objects**. On the next screen click the import button then choose the text file you saved the JSON as to import it. You may receive a warning message in a yellow box saying "The following saved objects use index patterns that do not exist. Please select the index patterns you'd like re-associated with them. You can create a new index pattern if necessary." Use the drop-down under **new index pattern** to select the `ufw_logs` index and hit **confirm all changes**. The visualizations and dashboards should be imported with the prefix [Shell] and you can access them through the related tabs on the left side of the screen.
