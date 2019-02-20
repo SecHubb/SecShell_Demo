@@ -1,4 +1,4 @@
-# SecShell Elastic Stack Demo
+# Philly Security Shell Meetup Elastic Stack Demo
 
 ## Prerequisites:
 
