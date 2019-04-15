@@ -7,7 +7,7 @@ networks:
 services:
  
   elasticsearch:
-    image: "docker.elastic.co/elasticsearch/elasticsearch:7.0.0-beta1"
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.0.0"
     container_name: elasticsearch
     networks:
      - shell-network
@@ -21,7 +21,7 @@ services:
  
  
   kibana:
-    image: "docker.elastic.co/kibana/kibana:7.0.0-beta1"
+    image: "docker.elastic.co/kibana/kibana:7.0.0"
     container_name: kibana
     networks:
      - shell-network
